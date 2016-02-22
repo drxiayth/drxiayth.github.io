@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Drxiayth.GitHub.io by drxiayth</title>
+    <title>drxiayth.github.io</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,20 +12,21 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Drxiayth.GitHub.io</h1>
+      <h1 class="project-name">drxiayth.gitHub.io</h1>
     </section>
-
     
     <h1 id="parent_domain"></h1>
     <br><br><br><br><br>
     <iframe src="http://cpdxue.github.io/"></iframe>
 
 
-
     <script>
     $(document).ready( function(){
-      x= document.domain;
-      $("#parent_domain").html("This page domain: " + x);
+
+      parent_domain = "http://drxiayth.github.io/";
+      child_domain = "http://cpdxue.github.io/";
+
+      $("#parent_domain").html("Domain: " + document.domain);
 
       // Create IE + others compatible event handler
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -34,9 +35,21 @@
 
       // Listen to message from child window
       eventer(messageEvent,function(e) {
-        console.log('parent received message!:  ',e.data);
+        var origin == event.origin || event.originalEvent.origin;
+        if (origin != child_domain){
+          return;
+        } else {
+          if (e.data.indexOf('msg from child to parent')>0){
+            console.log('parent received message: ',e.data);  
+            iframeRef = window.open(child_domain);
+            iframeRef.postMessage('msg from parent to child', child_domain)
+        }
+
+
+
+        
       },false);
-      
+
     })
     </script>
 
