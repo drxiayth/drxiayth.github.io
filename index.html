@@ -36,9 +36,9 @@
       // Listen to message from child window
       eventer(messageEvent,function(e) {
         var origin = event.origin || event.originalEvent.origin;
-        // if (origin != child_domain){
-        //   return;
-        // } else {
+        if (origin != child_domain){
+          return;
+        } else {
           console.log(origin)
           if (e.data.indexOf('msg from child to parent')>-1){
             console.log('parent received message: ',e.data);  
