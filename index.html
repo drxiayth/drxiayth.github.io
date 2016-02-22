@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>	
+</head>
+<body>
+
+
+<p>Click the button to display the domain name of the server that loaded this document.</p>
+
+<p id="parent_domain"></p>
+
+<script>
+$(document).ready( function(){
+	x= document.domain;
+	$("#parent_domain").innerHTML = x;
+})
+
+</script>
+</body>
+</html>
