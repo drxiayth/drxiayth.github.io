@@ -43,11 +43,8 @@
             console.log('parent received message: ',e.data);  
             iframeRef = window.open(child_domain);
             iframeRef.postMessage('msg from parent to child', child_domain)
-        }
-
-
-
-        
+          }
+        }        
       },false);
 
     })
