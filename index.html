@@ -16,17 +16,31 @@
     </section>
 
     
-    <p>Click the button to display the domain name of the server that loaded this document.</p>
+    <h1 id="parent_domain"></h1>
+    <br><br><br><br><br>
+    <iframe src="http://cpdxue.github.io/"></iframe>
 
-    <p id="parent_domain"></p>
+
 
     <script>
     $(document).ready( function(){
       x= document.domain;
       $("#parent_domain").html("This page domain: " + x);
-    })
 
+      // Create IE + others compatible event handler
+      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+      var eventer = window[eventMethod];
+      var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+      // Listen to message from child window
+      eventer(messageEvent,function(e) {
+        console.log('parent received message!:  ',e.data);
+      },false);
+      
+    })
     </script>
+
+
   
   </body>
 </html>
