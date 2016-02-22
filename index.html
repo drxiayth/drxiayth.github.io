@@ -35,7 +35,7 @@
 
       // Listen to message from child window
       eventer(messageEvent,function(e) {
-        var origin == event.origin || event.originalEvent.origin;
+        var origin = event.origin || event.originalEvent.origin;
         if (origin != child_domain){
           return;
         } else {
