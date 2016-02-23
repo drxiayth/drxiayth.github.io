@@ -18,14 +18,12 @@
     <h1 id="parent_domain"></h1>
     <br><br><br><br><br>
     <iframe src="http://cpdxue.github.io/"></iframe>
-
-
     <script>
+
     $(document).ready( function(){
 
       parent_domain = "http://drxiayth.github.io/";
       child_domain = "http://cpdxue.github.io/";
-
       $("#parent_domain").html("Domain: " + document.domain);
 
       // Create IE + others compatible event handler
@@ -33,9 +31,9 @@
       var eventer = window[eventMethod];
       var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
+  
       // Listen to message from child window
       eventer(messageEvent,function(e) {
-
         var origin = event.origin || event.originalEvent.origin;
         console.log(origin)
         if (origin != child_domain){
