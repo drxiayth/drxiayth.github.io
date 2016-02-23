@@ -41,7 +41,7 @@
             console.log('2 parent received iframe declaration from origin: ' + origin )
             console.log('3 parent blocks pageview from firing')
             console.log('4 parent sending msg to child')
-            $('iframe')[0].contentWindow.postMessage('a msg from parent: ' + 'reff:' + document.referrer + ' href:' + document.location.href, child_domain)
+            $('iframe')[0].contentWindow.postMessage('a msg from parent: ' + '\nreff:' + document.referrer + '\nhref:' + document.location.href, child_domain)
           }
         }        
       },false);
