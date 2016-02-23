@@ -25,7 +25,6 @@
       parent_domain = "http://drxiayth.github.io";
       child_domain = "http://cpdxue.github.io";
       $("#parent_domain").html("Domain: " + document.domain);
-
       // Create IE + others compatible event handler
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
@@ -38,10 +37,11 @@
         if (origin != child_domain){
           return;
         } else {
-          if (e.data.indexOf('msg from child to parent')!=-1){
-            console.log('parent received msg from origin: ' + origin )
-            console.log('parent received msg: ', e.data);      
-            $('iframe')[0].contentWindow.postMessage('a msg from parent', child_domain)
+          if (e.data.indexOf('iframe present') >-1){
+            console.log('2 parent received iframe declaration from origin: ' + origin )
+            console.log('3 parent blocks pageview from firing')
+            console.log('4 parent sending msg to child')
+            $('iframe')[0].contentWindow.postMessage('a msg from parent: ' + 'reff:' + document.referrer + ' href:' + document.location.href, child_domain)
           }
         }        
       },false);
