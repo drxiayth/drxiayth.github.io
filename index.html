@@ -32,18 +32,20 @@
       var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
   
-      // Listen to message from child window
+      // Listener
       eventer(messageEvent,function(e) {
         var origin = event.origin || event.originalEvent.origin;
-        console.log(origin)
-        if (origin != child_domain){
-          return;
-        } else {
-       
-          if (e.data.indexOf('msg from child to parent')>-1){
-            console.log('parent received message: ',e.data);  
+        console.log('parent received from origin: ' +  origin)
+        // if (origin != child_domain){
+        //   return;
+        // } else {
+          // if (e.data.indexOf('msg from child to parent')>-1){
+            console.log('parent received message: ', e.data);  
             iframeRef = window.open(child_domain);
             iframeRef.postMessage('msg from parent to child', child_domain)
+
+            $('iframe')[0].contentWindow.postMessage('hi', 'http://cpdxue.github.io/')
+
           }
         }        
       },false);
