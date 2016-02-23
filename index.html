@@ -42,11 +42,9 @@
           if (e.data.indexOf('msg from child to parent')!=-1){
             console.log('parent received message: ', e.data);      
             $('iframe')[0].contentWindow.postMessage('hi', 'http://cpdxue.github.io/')
-
-          // }
-        // }        
+          }
+        }        
       },false);
-
     })
     </script>
 
